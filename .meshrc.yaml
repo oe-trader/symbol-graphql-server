@@ -3,13 +3,18 @@ sources:
     handler:
       openapi:
         source: ./schema/1_0_5.yml
+        # source: ${SCHEMA_PATH}
         endpoint: ${NODE_URL}
+        operationHeaders:
+          timeout: ${API_TIMEOUT:-5000}
 transforms:
   - rename:
       renames:
         - from:
             type: .*DTO$
           to:
-            type: "{type}"
+            type: '{type}'
 serve:
   playground: true
+  port: ${PORT:-4000}
+  hostname: ${HOST:-localhost}
