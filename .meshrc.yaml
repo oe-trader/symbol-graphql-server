@@ -1,0 +1,15 @@
+sources:
+  - name: Symbol
+    handler:
+      openapi:
+        source: ./schema/1_0_5.yml
+        endpoint: ${NODE_URL}
+transforms:
+  - rename:
+      renames:
+        - from:
+            type: .*DTO$
+          to:
+            type: "{type}"
+serve:
+  playground: true
