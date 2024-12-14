@@ -1,9 +1,9 @@
 # Symbol GraphQL Server
 
-このリポジトリはSymbol blockchainのAPIをGraphQLで利用できるようにするためのProjectです。
+このリポジトリはSymbol blockchainのAPIをGraphQLで利用できるようにするためのプロジェクトです。
 コミュニティで作成されているOpenAPIのスキーマファイルを元にGraphQLのSchemaやResolverを自動生成します。
 
-## Useage
+## 使い方
 ### 1. 前提条件
 
 #### 1-1. nodeおよびパッケージマネージャー
@@ -31,6 +31,10 @@ curl -o schema/1_0_5.yml https://github.com/symbol-blockchain-community/symbol-r
 
 ### 3. スキーマファイルのビルド
 
+#### 3-1. 設定ファイルの作成
+`.meshrc.example.yaml`を`.meshrc.yaml`にリネームし、`endpoint`の値を利用するSymbolノードのURLに変更してください。
+
+#### 3-2. ビルド
 ```
 pnpm run build
 ```
@@ -39,6 +43,13 @@ pnpm run build
 
 ```
 pnpm run dev
+```
+
+### 6. Swagger UIの起動（オプション）
+
+OpenAPIの仕様を確認する場合は、以下のコマンドでSwagger UIを起動できます。
+```
+pnpm run swagger
 ```
 
 ## バージョンについて
@@ -50,3 +61,11 @@ pnpm run dev
 ### version 2
 - REST APIのラップではなく、Symbolのブロックチェーンのデータを直接利用するもの
 
+## コントリビューション
+
+このプロジェクトはMITライセンスで公開されており、どなたでも自由に利用・改変・再配布が可能です。
+バグ報告や機能改善の提案、プルリクエストなど、あらゆる形での貢献を歓迎しています。
+
+## ライセンス
+
+MIT License
