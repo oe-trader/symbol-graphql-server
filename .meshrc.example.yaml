@@ -11,5 +11,7 @@ transforms:
             type: .*DTO$
           to:
             type: '{type}'
+          useRegExpForTypes: true
 serve:
+  endpoint: /graphql
   playground: true
