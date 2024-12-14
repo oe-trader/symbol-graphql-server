@@ -1,4 +1,4 @@
-[English READMEはこちら](README_en.md)
+[English READMEはこちら](README.md)
 
 # Symbol GraphQL Server
 

@@ -1,4 +1,4 @@
-[Click here for Japanese README](README_ja.md)
+[Click here for Japanese README](README.ja.md)
 
 # symbol-graphql-server
 
