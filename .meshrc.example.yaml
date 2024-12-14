@@ -3,7 +3,7 @@ sources:
     handler:
       openapi:
         source: ./schema/1_0_5.yml
-        endpoint: ${NODE_URL}
+        endpoint: https://your-node-url:3001
 transforms:
   - rename:
       renames:
