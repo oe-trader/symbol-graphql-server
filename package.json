@@ -1,0 +1,51 @@
+{
+  "name": "symbol-graphql-server",
+  "version": "1.0.0",
+  "description": "GraphQL server for Symbol blockchain",
+  "keywords": [
+    "symbol",
+    "blockchain",
+    "graphql"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/symbol-blockchain-community/symbol-graphql-server"
+  },
+  "bugs": {
+    "url": "https://github.com/symbol-blockchain-community/symbol-graphql-server/issues"
+  },
+  "homepage": "https://github.com/symbol-blockchain-community/symbol-graphql-server#readme",
+  "author": "Symbol Blockchain Community",
+  "contributors": [
+    {
+      "name": "yatch_oe",
+      "url": "https://github.com/yatch_oe"
+    }
+  ],
+  "license": "MIT",
+  "scripts": {
+    "clean": "rimraf .mesh",
+    "build": "pnpm run clean && mesh build",
+    "dev": "mesh dev",
+    "swagger": "tsx ./scripts/swagger.mts"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@graphql-mesh/cli": "0.98.7",
+    "@graphql-mesh/openapi": "0.108.6",
+    "@graphql-mesh/transform-rename": "^0.103.9",
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.10.1",
+    "@types/open": "^6.2.1",
+    "@types/yamljs": "^0.2.34",
+    "express": "^4.21.2",
+    "graphql-yoga": "5.10.4",
+    "open": "^10.1.0",
+    "rimraf": "^6.0.1",
+    "swagger-ui-express": "5.0.1",
+    "symbol-sdk": "^3.2.3",
+    "tsx": "^4.7.0",
+    "typescript": "^5.7.2",
+    "yamljs": "^0.3.0"
+  }
+}

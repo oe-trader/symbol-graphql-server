@@ -1,0 +1,17 @@
+sources:
+  - name: Symbol
+    handler:
+      openapi:
+        source: ./schema/1_0_5.yml
+        endpoint: https://your-node-url:3001
+transforms:
+  - rename:
+      renames:
+        - from:
+            type: .*DTO$
+          to:
+            type: '{type}'
+          useRegExpForTypes: true
+serve:
+  endpoint: /graphql
+  playground: true
