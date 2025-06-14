@@ -27,22 +27,47 @@ corepack enable
 pnpm install
 ```
 
-### 2. スキーマファイルのダウンロード
+### 2. スキーマの設定
+
+#### 2-1. リモートスキーマの使用（推奨）
+ローカルにダウンロードすることなく、GitHubのOpenAPIスキーマファイルを直接参照できます。
+
+`.meshrc.example.yaml`を`.meshrc.yaml`にリネームし、以下のように設定を更新してください：
+
+```yaml
+sources:
+  - name: Symbol
+    handler:
+      openapi:
+        source: https://raw.githubusercontent.com/symbol/symbol/refs/heads/new-docs/openapi/openapi-symbol.yml
+        endpoint: https://mainnet.symbol.binspec.com:3001
+```
+
+#### 2-2. ローカルスキーマファイルの使用（代替方法）
+ローカルスキーマファイルを使用したい場合は、まずダウンロードしてください：
 
 1. 以下のページにアクセスし、有効なyamlファイルのバージョンを確認します。
-```
-https://github.com/symbol-blockchain-community/symbol-rest-client/tree/main/schema
-```
+   `https://github.com/symbol-blockchain-community/symbol-rest-client/tree/main/schema`
 
-2. 以下のコマンドを実行し、スキーマファイルをダウンロードします。
-```
-curl -o schema/1_0_5.yml https://github.com/symbol-blockchain-community/symbol-rest-client/blob/main/schema/1_0_5.yml
-```
+2. スキーマファイルをダウンロードします：
+   ```
+   curl -o schema/1_0_5.yml https://github.com/symbol-blockchain-community/symbol-rest-client/blob/main/schema/1_0_5.yml
+   ```
+
+3. `.meshrc.yaml`をローカルファイルを使用するように更新します：
+   ```yaml
+   sources:
+     - name: Symbol
+       handler:
+         openapi:
+           source: ./schema/1_0_5.yml
+           endpoint: https://mainnet.symbol.binspec.com:3001
+   ```
 
 ### 3. スキーマファイルのビルド
 
-#### 3-1. 設定ファイルの作成
-`.meshrc.example.yaml`をコピーして`.meshrc.yaml`にリネームし、`endpoint`の値を利用するSymbolノードのURLに変更してください。
+#### 3-1. エンドポイント設定の更新
+`.meshrc.yaml`の`endpoint`の値を、利用するSymbolノードのURLに変更してください。
 
 #### 3-2. ビルド
 ```

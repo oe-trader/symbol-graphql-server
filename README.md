@@ -22,22 +22,47 @@ corepack enable
 pnpm install
 ```
 
-### 2. Downloading the Schema Files
+### 2. Schema Configuration
+
+#### 2-1. Using Remote Schema (Recommended)
+You can directly reference the OpenAPI schema file from GitHub without downloading it locally.
+
+Rename `.meshrc.example.yaml` to `.meshrc.yaml`, then update the configuration:
+
+```yaml
+sources:
+  - name: Symbol
+    handler:
+      openapi:
+        source: https://raw.githubusercontent.com/symbol/symbol/refs/heads/new-docs/openapi/openapi-symbol.yml
+        endpoint: https://mainnet.symbol.binspec.com:3001
+```
+
+#### 2-2. Using Local Schema File (Alternative)
+If you prefer to use a local schema file, you can download it first:
 
 1. Visit the following URL and check the available YAML file versions:
+   `https://github.com/symbol-blockchain-community/symbol-rest-client/tree/main/schema`
 
-`https://github.com/symbol-blockchain-community/symbol-rest-client/tree/main/schema`
+2. Download the schema file:
+   ```
+   curl -o schema/1_0_5.yml https://github.com/symbol-blockchain-community/symbol-rest-client/blob/main/schema/1_0_5.yml
+   ```
 
-2. Run the following command to download the schema file:
-
-```
-curl -o schema/1_0_5.yml https://github.com/symbol-blockchain-community/symbol-rest-client/blob/main/schema/1_0_5.yml
-```
+3. Update your `.meshrc.yaml` to use the local file:
+   ```yaml
+   sources:
+     - name: Symbol
+       handler:
+         openapi:
+           source: ./schema/1_0_5.yml
+           endpoint: https://mainnet.symbol.binspec.com:3001
+   ```
 
 ### 3. Building the Schema File
 
-#### 3-1. Creating a Configuration File
-Rename .meshrc.example.yaml to .meshrc.yaml, then update the endpoint value to match the URL of the Symbol node you plan to use.
+#### 3-1. Update Endpoint Configuration
+Make sure to update the `endpoint` value in your `.meshrc.yaml` to match the URL of the Symbol node you plan to use.
 
 #### 3-2. Build
 ```
