@@ -2,7 +2,7 @@ sources:
   - name: Symbol
     handler:
       openapi:
-        source: ./schema/1_0_5.yml
+        source: https://raw.githubusercontent.com/symbol/symbol/refs/heads/new-docs/openapi/openapi-symbol.yml
         endpoint: https://your-node-url:3001
 transforms:
   - rename:
